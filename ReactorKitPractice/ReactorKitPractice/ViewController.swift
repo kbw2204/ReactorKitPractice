@@ -28,7 +28,44 @@ class ViewController: UIViewController {
     override func loadView() {
         let view = UIView()
         self.view = view
-        view.backgroundColor = .red
+        view.backgroundColor = .systemBackground
+        
+        let decreaseButton = UIButton()
+        self.decreaseButton = decreaseButton
+        decreaseButton.setImage(UIImage(systemName: "minus"), for: .normal)
+        decreaseButton.tintColor = .black
+        decreaseButton.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(decreaseButton)
+        
+        NSLayoutConstraint.activate([
+            decreaseButton.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
+            decreaseButton.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            decreaseButton.heightAnchor.constraint(equalTo: decreaseButton.widthAnchor)
+        ])
+        
+        let valueLabel = UILabel()
+        self.valueLabel = valueLabel
+        valueLabel.text = "0"
+        valueLabel.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(valueLabel)
+        
+        NSLayoutConstraint.activate([
+            valueLabel.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
+            valueLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
+        ])
+        
+        let increaseButton = UIButton()
+        self.increaseButton = increaseButton
+        increaseButton.setImage(UIImage(systemName: "plus"), for: .normal)
+        increaseButton.tintColor = .black
+        increaseButton.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(increaseButton)
+        
+        NSLayoutConstraint.activate([
+            increaseButton.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
+            increaseButton.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+            increaseButton.heightAnchor.constraint(equalTo: increaseButton.widthAnchor)
+        ])
     }
 }
 
