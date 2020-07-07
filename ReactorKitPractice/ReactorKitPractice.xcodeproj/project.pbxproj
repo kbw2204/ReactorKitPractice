@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,6 +15,7 @@
 		5524915124B30D6B00CF2945 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5524915024B30D6B00CF2945 /* Assets.xcassets */; };
 		5524915424B30D6B00CF2945 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5524915224B30D6B00CF2945 /* LaunchScreen.storyboard */; };
 		5524915F24B30D6B00CF2945 /* ReactorKitPracticeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5524915E24B30D6B00CF2945 /* ReactorKitPracticeTests.swift */; };
+		5582F92524B31B6B00F88044 /* ViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5582F92424B31B6B00F88044 /* ViewReactor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +42,7 @@
 		5524915A24B30D6B00CF2945 /* ReactorKitPracticeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReactorKitPracticeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5524915E24B30D6B00CF2945 /* ReactorKitPracticeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactorKitPracticeTests.swift; sourceTree = "<group>"; };
 		5524916024B30D6B00CF2945 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5582F92424B31B6B00F88044 /* ViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewReactor.swift; sourceTree = "<group>"; };
 		6E2E5B445CCFD126508A06D4 /* Pods_ReactorKitPracticeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReactorKitPracticeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		708DBB0D14932EC2A37CDC01 /* Pods-ReactorKitPracticeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactorKitPracticeTests.release.xcconfig"; path = "Target Support Files/Pods-ReactorKitPracticeTests/Pods-ReactorKitPracticeTests.release.xcconfig"; sourceTree = "<group>"; };
 		8A4E1D8025607AD5E0E65B2A /* Pods_ReactorKitPractice.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReactorKitPractice.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -74,7 +76,6 @@
 				3D4027C529D2523CA1B0DA6C /* Pods-ReactorKitPracticeTests.debug.xcconfig */,
 				708DBB0D14932EC2A37CDC01 /* Pods-ReactorKitPracticeTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -104,6 +105,7 @@
 				5524914724B30D6800CF2945 /* AppDelegate.swift */,
 				5524914924B30D6800CF2945 /* SceneDelegate.swift */,
 				5524914B24B30D6800CF2945 /* ViewController.swift */,
+				5582F92424B31B6B00F88044 /* ViewReactor.swift */,
 				5524915024B30D6B00CF2945 /* Assets.xcassets */,
 				5524915224B30D6B00CF2945 /* LaunchScreen.storyboard */,
 				5524915524B30D6B00CF2945 /* Info.plist */,
@@ -299,6 +301,7 @@
 				5524914C24B30D6800CF2945 /* ViewController.swift in Sources */,
 				5524914824B30D6800CF2945 /* AppDelegate.swift in Sources */,
 				5524914A24B30D6800CF2945 /* SceneDelegate.swift in Sources */,
+				5582F92524B31B6B00F88044 /* ViewReactor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
