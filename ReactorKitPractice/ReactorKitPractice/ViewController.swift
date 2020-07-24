@@ -57,10 +57,19 @@ class ViewController: UIViewController, View {
         return statusIndicator
     }()
     
+    let alertButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("show alert", for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
     // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        initConstraint()
     }
 
     override func loadView() {
@@ -68,11 +77,9 @@ class ViewController: UIViewController, View {
         self.view = view
         view.backgroundColor = .systemBackground
 
-        [decreaseButton, valueLabel, increaseButton, activityIndicator].forEach{
+        [decreaseButton, valueLabel, increaseButton, activityIndicator, alertButton].forEach {
             self.view.addSubview($0)
         }
-        
-        initConstraint()
     }
     
     func initConstraint() {
@@ -89,7 +96,10 @@ class ViewController: UIViewController, View {
             increaseButton.heightAnchor.constraint(equalTo: increaseButton.widthAnchor),
             
             activityIndicator.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            activityIndicator.topAnchor.constraint(equalTo: valueLabel.safeAreaLayoutGuide.bottomAnchor, constant: 10)
+            activityIndicator.topAnchor.constraint(equalTo: valueLabel.safeAreaLayoutGuide.bottomAnchor, constant: 10),
+            
+            alertButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            alertButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -20)
         ])
     }
     
@@ -106,6 +116,11 @@ class ViewController: UIViewController, View {
             .bind(to: reactor.action)
         .disposed(by: disposeBag)
         
+        alertButton.rx.tap
+            .map {Reactor.Action.showAlertAction}
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
         // State
         reactor.state.map{$0.value}
         .distinctUntilChanged()
@@ -117,6 +132,19 @@ class ViewController: UIViewController, View {
         .distinctUntilChanged()
             .bind(to: activityIndicator.rx.isAnimating)
         .disposed(by: disposeBag)
+        
+        reactor.state.map{$0.isAlertShow}
+            .compactMap {$0}
+        .bind(onNext: {[weak self] in
+            self?.showAlert("알람참", "개발자아라찌")
+            }).disposed(by: disposeBag)
+    }
+    
+    func showAlert(_ title: String, _ message: String) {
+        let alertViewController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okayAction = UIAlertAction(title: "네에..", style: .default)
+        alertViewController.addAction(okayAction)
+        self.present(alertViewController, animated: true)
     }
 }
 

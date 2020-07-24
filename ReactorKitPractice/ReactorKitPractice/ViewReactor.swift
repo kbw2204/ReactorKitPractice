@@ -14,17 +14,20 @@ class ViewReactor: Reactor {
     enum Action {
         case increase
         case decrease
+        case showAlertAction
     }
     
     enum Mutation {
         case increaseValue
         case decreaseValue
         case setLoading(Bool)
+        case alertButtonTapped(Void?)
     }
     
     struct State {
         var value: Int = 0
         var isLoading: Bool = false
+        var isAlertShow: Void?
     }
     
     let initialState: State = State()
@@ -38,12 +41,19 @@ class ViewReactor: Reactor {
                     .delay(1, scheduler: MainScheduler.instance),
                 Observable.just(Mutation.setLoading(false))
             ])
+            
         case .increase:
             return Observable.concat([
                 Observable.just(Mutation.setLoading(true)),
                 Observable.just(Mutation.increaseValue)
                     .delay(1, scheduler: MainScheduler.instance),
                 Observable.just(Mutation.setLoading(false))
+            ])
+            
+        case .showAlertAction:
+            return Observable.concat([
+                Observable.just(Mutation.alertButtonTapped(Void())),
+                Observable.just(Mutation.alertButtonTapped(nil))
             ])
         }
     }
@@ -57,6 +67,8 @@ class ViewReactor: Reactor {
             newState.value += 1
         case let .setLoading(isLoading):
             newState.isLoading = isLoading
+        case .alertButtonTapped(let void):
+            newState.isAlertShow = void
         }
         
         return newState
